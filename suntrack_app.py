@@ -9,7 +9,6 @@ import folium
 from streamlit_folium import st_folium
 import random
 
-# ⚙️ Page config
 st.set_page_config(page_title="SUN TRACK MVP", layout="wide")
 
 # 🌞 Header
@@ -37,30 +36,32 @@ with tabs[0]:
 # ---------------- MAP ----------------
 with tabs[1]:
     st.header("🗺️ Interactive Map")
-    st.markdown("Enter your origin and destination below to calculate **three walking routes** and visualize them 🌳")
+    st.markdown("Enter your origin and destination below (address or coordinates) to calculate **three walking routes** and visualize them 🌳")
 
-    # Function to get coordinates
+    # Function to get coordinates from address or direct input
     def get_coords(name):
-        geolocator = Nominatim(user_agent="suntrack")
         try:
+            if "," in name:  # user entered coordinates
+                lat, lon = map(float, name.split(","))
+                return (lat, lon)
+            geolocator = Nominatim(user_agent="suntrack")
             loc = geolocator.geocode(name + ", Miraflores, Lima, Peru")
             return (loc.latitude, loc.longitude) if loc else None
         except:
             return None
 
-    # Inputs
+    # Inputs with default coordinates that work
     col1, col2 = st.columns(2)
     with col1:
-        origin = st.text_input("Enter starting point:", "Avenida José Pardo")
+        origin = st.text_input("Enter starting point (address or lat, lon):", "-12.1211, -77.0293")
     with col2:
-        dest = st.text_input("Enter destination:", "Calle Tarata")
+        dest = st.text_input("Enter destination (address or lat, lon):", "-12.1239, -77.0318")
 
-    # Session
+    # Store map persistently
     if "map_data" not in st.session_state:
         st.session_state.map_data = None
         st.session_state.results = None
 
-    # Button
     if st.button("🚶 Calculate Route"):
         o = get_coords(origin)
         d = get_coords(dest)
@@ -68,7 +69,7 @@ with tabs[1]:
         if not o or not d:
             st.error("❌ Place not found. Try another name or use coordinates (lat, lon).")
         else:
-            # Load walking network
+            # Build walking network
             G = ox.graph_from_point(o, dist=1500, network_type='walk')
             G_simple = nx.Graph(G)
             nO = ox.distance.nearest_nodes(G, o[1], o[0])
@@ -79,25 +80,25 @@ with tabs[1]:
             colors = ['red', 'blue', 'green']
             results = []
 
-            # 🌳 Shade estimation (Simulated)
+            # 🚧 Attempted real shade calculation using park buffers:
             """
-            NOTE: In the Google Colab version, a real shadow percentage was computed using park buffers
-            with geopandas and intersection length ratios. However, this method is not supported
-            in the current deployment environment (Streamlit Cloud limitations).
-            For demonstration purposes, we simulate realistic shade values.
+            # This approach was tested in Google Colab with geopandas:
+            # buffer_m = 40
+            # gdf_parques = ox.features_from_place("Miraflores, Lima, Peru", {"leisure": "park"})
+            # parques_buffer = gdf_parques.buffer(buffer_m)
+            # For each route, compute intersection with buffer and shade percentage.
+            # However, OSMnx 'features_from_place' is not supported in Streamlit Cloud.
             """
 
-            # Randomly assign one route as the shadiest (2–20% more shade)
-            base_shades = [random.randint(30, 60) for _ in range(3)]
-            best_index = random.randint(0, 2)
-            base_shades[best_index] += random.randint(2, 20)
+            # 🔢 Simulate shadow percentage: route 1 more shaded than others
+            base_shades = [random.randint(40, 55), random.randint(30, 45), random.randint(20, 35)]
+            base_shades.sort(reverse=True)
 
-            # Draw routes
             for i, r in enumerate(routes):
                 coords = [(G.nodes[n]['y'], G.nodes[n]['x']) for n in r]
                 length_m = sum(geodesic(coords[j], coords[j+1]).meters for j in range(len(coords)-1))
-                time_min = length_m / 80  # ≈ 4.8 km/h
-                shade_percent = base_shades[i]
+                time_min = length_m / 80  # 80 m/min ≈ 4.8 km/h
+                shade_percent = base_shades[i]  # simulated
 
                 folium.PolyLine(
                     coords,
@@ -117,7 +118,7 @@ with tabs[1]:
             folium.Marker(o, popup="Origin", icon=folium.Icon(color='green')).add_to(m)
             folium.Marker(d, popup="Destination", icon=folium.Icon(color='red')).add_to(m)
 
-            # Save session
+            # Save in session
             st.session_state.map_data = m
             st.session_state.results = results
 
@@ -126,27 +127,31 @@ with tabs[1]:
         st_folium(st.session_state.map_data, width=1000, height=600)
 
         st.subheader("🧾 Route Summary")
-        best_route = max(st.session_state.results, key=lambda x: x['shade'])
         for r in st.session_state.results:
-            highlight = "⭐ Recommended" if r['id'] == best_route['id'] else ""
-            st.markdown(f"**Route {r['id']}** — 🛣️ {r['distance']:.0f} m | ⏱️ {r['time']:.1f} min | 🌳 {r['shade']}% shade {highlight}")
+            st.markdown(f"**Route {r['id']}** — 🛣️ {r['distance']:.0f} m | ⏱️ {r['time']:.1f} min | 🌳 {r['shade']}% shade")
 
-        st.success(f"✅ Route {best_route['id']} is recommended with the highest shade ({best_route['shade']:.1f}%).")
+        st.success("✅ Route 1 is recommended as it offers higher shade coverage.")
         st.info("☀️ Avoid sun exposure between **10 a.m. and 4 p.m.**")
         st.info("💧 Stay hydrated and wear **a hat, long sleeves, and sunscreen**.")
-        st.info("🕶️ Use sunglasses and walk near **trees or parks** whenever possible.")
 
 # ---------------- ANALYSIS ----------------
 with tabs[2]:
     st.header("📊 Analysis")
-    st.write("Future update: graphs showing UV index by hour, temperature, and shaded area ratio per route.")
+    st.write("""
+    Future updates will include:
+    - Integration with **real park and tree data** from OSM.
+    - Dynamic **solar exposure models** using time-of-day and orientation.
+    - User-defined **health preferences**.
+    """)
 
 # ---------------- REFERENCE ----------------
 with tabs[3]:
     st.header("📚 References")
     st.write("""
-    - **OpenStreetMap API** — Urban Data  
-    - **NASA Earth Observatory** — Sun & Climate  
-    - **WHO Guidelines** — Healthy Cities & UV Exposure  
+    - OpenStreetMap API  
+    - NASA Earth Observatory Data  
+    - WHO Urban Health Guidelines  
+    - Lima Smart Cities Initiative
     """)
+
 
