@@ -12,8 +12,11 @@ import random
 st.set_page_config(page_title="SUN TRACK MVP", layout="wide")
 
 # 🌞 Header
-st.title("☀️ SUN TRACK - MVP (Miraflores)")
-st.markdown("Smart Well Cities prototype — **Healthy walking routes with lower solar exposure** 🌳")
+st.title("☀️ SUN TRACK - MVP Prototpye (Miraflores, Perú as sample)")
+st.markdown("""
+Smart Well Cities prototype — **Healthy walking routes with lower solar exposure** 🌳  
+*(Miraflores is used as a sample location for testing and demonstration purposes.)*
+""")
 
 # 🧭 Tabs
 tabs = st.tabs(["🏙️ Introduction", "🗺️ Map", "📊 Analysis", "📚 Reference"])
@@ -23,8 +26,8 @@ with tabs[0]:
     st.header("About Sun Track")
     st.markdown("""
     **Sun Track** helps you find walking routes in Miraflores with **lower solar exposure**.  
-    ☀️ Based on **OpenStreetMap** and **urban data**.  
-    🌳 Encourages healthy, shaded mobility.
+    **Sun Track** is a prototype that identifies **walking routes with lower solar exposure** 🌞,  
+    initially tested in *Miraflores (Lima, Peru)* as a **sample city**, but scalable to other urban areas.
 
     ### Why use it
     - ☀️ Less UV exposure = less skin damage  
@@ -153,5 +156,6 @@ with tabs[3]:
     - WHO Urban Health Guidelines  
     - Lima Smart Cities Initiative
     """)
+
 
 
