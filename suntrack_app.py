@@ -143,54 +143,89 @@ with tabs[2]:
     st.markdown("""
     This section explores **solar radiation patterns** using NASA and OSM datasets.  
     The following analyses illustrate global and seasonal exposure trends to help identify regions with higher health risks.
+    
+    🔗 **Full analysis and data exploration available in Google Colab:**  
+    [View Colab Notebook](https://colab.research.google.com/drive/1rKnuQe6UydH8H0ZGUVVh0Rb4JOQujOU0?usp=sharing)
     """)
+
+    # === Top KPIs (adds quick value) ===
+    k1, k2, k3 = st.columns(3)
+    with k1:
+        st.metric("Peak Shortwave (Seasonal)", "≈ 370 W/m²", help="Summer peak from BOREAS-like profiles")
+    with k2:
+        st.metric("Long-term Trend (1983–2016)", "+15%", help="Sustained increase in solar intensity")
+    with k3:
+        st.metric("Country Hotspots (avg.)", "> 3 W/m²", help="Desert/equatorial regions")
+
+    st.divider()
 
     # 💡 Interpretation 1 – Seasonal Variation
     st.subheader("💡 Interpretation 1 – Seasonal Variation (BOREAS 1994)")
     st.markdown("""
-    ☀️ **Shortwave radiation** peaks during **summer months (~370 W/m²)**, while **longwave radiation** remains consistently high (**>250 W/m²**).  
-    📈 This indicates **strong solar exposure** in warmer seasons, increasing **UV risks** and potential **skin damage**.
+    ☀️ **Shortwave radiation** peaks during **summer months (~370 W/m²)**, while **longwave** stays consistently high (**>250 W/m²**).  
+    📈 Stronger seasonal exposure → higher **UV risk** at midday in warm months.
     """)
-    st.image("images/graph2.png", caption="📅 Monthly Average of Shortwave and Longwave Radiation (BOREAS 1994)", use_container_width=True)
+    st.image("images/graph2.png", caption="📅 Monthly Shortwave & Longwave Radiation (BOREAS-style)", use_container_width=True)
 
     # 💡 Interpretation 2 – Long-Term Trend
     st.subheader("💡 Interpretation 2 – Long-Term Trend (1983–2016)")
     st.markdown("""
-    📈 The average **solar intensity** shows a **slight upward trend (+15%)** over 30 years.  
-    ⚠️ This sustained high radiation level suggests increasing exposure, potentially intensifying **ozone depletion effects** and **UV penetration**.
+    📈 Average **solar intensity** shows a **~+15%** rise over three decades.  
+    ⚠️ This implies growing **UV exposure** and emphasizes the need for **shade-aware routing**.
     """)
-    st.image("images/graph3.png", caption="📈 Trend of Solar Intensity (1983–2016)", use_container_width=True)
+    st.image("images/graph3.png", caption="📈 Multi-decadal Trend of Solar Intensity", use_container_width=True)
 
     # 💡 Interpretation 3 – Regional Differences
     st.subheader("💡 Interpretation 3 – Regional Differences")
     st.markdown("""
-    🌍 **Asia** and **Africa** exhibit the **highest and most variable** solar intensities, with medians near **2 W/m²** and peaks over **6 W/m²**.  
-    🧴 Populations in these zones require **greater sun protection** and **urban planning** with shade and vegetation.
+    🌍 **Asia** and **Africa** present the **highest and most variable** intensity (medians ≈ **2 W/m²**, peaks **>6 W/m²**).  
+    🧴 Populations here need stronger **protection behaviors** and **shade infrastructures**.
     """)
-    st.image("images/graph4.png", caption="🌍 Regional Differences in Solar Intensity", use_container_width=True)
+    st.image("images/graph4.png", caption="🌍 Regional Intensity Comparison", use_container_width=True)
 
     # 💡 Interpretation 4 – Country-Level Hotspots
     st.subheader("💡 Interpretation 4 – Country-Level Hotspots")
     st.markdown("""
-    🏆 **Pakistan**, **Oman**, and **UAE** lead with **>3 W/m² average solar intensity**, aligning with **desert** and **equatorial** regions.  
-    ☀️ These areas face **extreme UV levels**, increasing risks of **skin cancer** and **heat stress**.
+    🏆 **Pakistan**, **Oman**, and **UAE** lead with **>3 W/m²** average solar intensity, consistent with **arid/desert climates**.  
+    ☀️ Extreme UV → higher risks of **skin cancer** and **heat stress**.
     """)
-    st.image("images/graph5.png", caption="🏆 Top 10 Countries by Average Solar Intensity", use_container_width=True)
+    st.image("images/graph5.png", caption="🏆 Top Countries by Average Solar Intensity", use_container_width=True)
 
     # 💡 Interpretation 5 – Spatial Clusters
     st.subheader("💡 Interpretation 5 – Spatial Clusters")
     st.markdown("""
-    🗺️ High-intensity clusters concentrate in **equatorial**, **arid**, and **tropical** zones.  
-    🔆 These combine long **sunlight hours** and reflective surfaces (sand, sea), amplifying **radiation exposure** to dangerous levels.
+    🗺️ High-intensity clusters sit in **equatorial**, **tropical**, and **arid** belts.  
+    🔆 Long sunlight hours + reflective surfaces (sand/sea) amplify exposure.
     """)
-    st.image("images/graph1.png", caption="🗺️ Geographical Distribution of Solar Intensity", use_container_width=True)
+    st.image("images/graph1.png", caption="🗺️ Geographical Distribution of High Solar Intensity", use_container_width=True)
 
-    # 🌍 General Conclusion
-    st.subheader("🌍 General Conclusion")
+    st.divider()
+
+    # Why this matters for Sun Track (ties analysis to your solution)
+    with st.expander("🧠 Why this matters for Sun Track"):
+        st.markdown("""
+        - **Seasonality → Time-aware tips:** Prefer shaded routes and avoid **10 a.m. – 4 p.m.** in summer.
+        - **Long-term rise → Persistent need:** Shade-aware guidance becomes **more valuable every year**.
+        - **Regional gaps → Scalability:** Cities in high-intensity regions benefit most from **shade routing**.
+        - **Hotspots → Urban planning:** Data can inform where to **plant trees** or add **canopies**.
+        """)
+
+    # Actionable takeaways (what users/cities should do)
+    st.subheader("✅ Actionable Takeaways")
     st.markdown("""
-    ⚠️ Sustained and rising **solar radiation**—especially in **Asia**, **Africa**, and **desert regions**—shows a global increase in **UV exposure**.  
-    Without adequate protection, risks of **skin cancer**, **photoaging**, and **heat-related illnesses** grow significantly.  
-    💡 Future cities must integrate **shade infrastructure**, **sunscreen campaigns**, and **UV-aware planning** for healthier urban living.
+    - Prefer **shaded routes** when walking; check Sun Track’s recommended path.
+    - **Hydrate** and use **sun protection** (hat, long sleeves, SPF 50+).
+    - Plan outdoor trips **outside 10 a.m.–4 p.m.** on high-UV days.
+    - Cities should expand **tree canopy** and **shade infrastructure** in hot corridors.
+    """)
+
+    # Roadmap: how Analysis will evolve (adds value for judges/stakeholders)
+    st.subheader("🛠️ Analysis Roadmap")
+    st.markdown("""
+    - Integrate **real OSM trees/parks** to compute shade percentage per segment.
+    - Add **UV index** & **cloud cover** (NASA/POWER, Open-Meteo) by hour/location.
+    - Build a **health exposure score** combining **distance, time, UV, shade**.
+    - Release **city dashboards** to reveal **low-shade corridors** for interventions.
     """)
 
 # ---------------- REFERENCE ----------------
@@ -202,6 +237,7 @@ with tabs[3]:
     - WHO Urban Health Guidelines  
     - Lima Smart Cities Initiative
     """)
+
 
 
 
