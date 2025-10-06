@@ -98,5 +98,18 @@ Selects routes by length and simulated shading to recommend the healthiest optio
 
 ---
 
+## 👥 Team
+
+
+- **Diego Armando Mendoza Flores**  
+- **Carlos Josué Mancilla Felices**  
+- **Gerard Gianpier Rojas Mancilla**
+- **Joanna Luisa Cajahuanca Aquino**  
+- **Giselle Araujo Ramos**  
+- **Cristiam Daniel Romero Torres**  
+
+---
+
 ## 📜 License
 MIT License © 2025 — Sun Track MVP Prototype
+
