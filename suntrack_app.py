@@ -151,7 +151,7 @@ with tabs[2]:
     ☀️ **Shortwave radiation** peaks during **summer months (~370 W/m²)**, while **longwave radiation** remains consistently high (**>250 W/m²**).  
     📈 This indicates **strong solar exposure** in warmer seasons, increasing **UV risks** and potential **skin damage**.
     """)
-    st.image("graph2.png", caption="📅 Monthly Average of Shortwave and Longwave Radiation (BOREAS 1994)")
+    st.image("images/graph2.png", caption="📅 Monthly Average of Shortwave and Longwave Radiation (BOREAS 1994)", use_container_width=True)
 
     # 💡 Interpretation 2 – Long-Term Trend
     st.subheader("💡 Interpretation 2 – Long-Term Trend (1983–2016)")
@@ -159,7 +159,7 @@ with tabs[2]:
     📈 The average **solar intensity** shows a **slight upward trend (+15%)** over 30 years.  
     ⚠️ This sustained high radiation level suggests increasing exposure, potentially intensifying **ozone depletion effects** and **UV penetration**.
     """)
-    st.image("graph3.png", caption="📈 Trend of Solar Intensity (1983–2016)")
+    st.image("images/graph3.png", caption="📈 Trend of Solar Intensity (1983–2016)", use_container_width=True)
 
     # 💡 Interpretation 3 – Regional Differences
     st.subheader("💡 Interpretation 3 – Regional Differences")
@@ -167,7 +167,7 @@ with tabs[2]:
     🌍 **Asia** and **Africa** exhibit the **highest and most variable** solar intensities, with medians near **2 W/m²** and peaks over **6 W/m²**.  
     🧴 Populations in these zones require **greater sun protection** and **urban planning** with shade and vegetation.
     """)
-    st.image("graph4.png", caption="🌍 Regional Differences in Solar Intensity")
+    st.image("images/graph4.png", caption="🌍 Regional Differences in Solar Intensity", use_container_width=True)
 
     # 💡 Interpretation 4 – Country-Level Hotspots
     st.subheader("💡 Interpretation 4 – Country-Level Hotspots")
@@ -175,7 +175,7 @@ with tabs[2]:
     🏆 **Pakistan**, **Oman**, and **UAE** lead with **>3 W/m² average solar intensity**, aligning with **desert** and **equatorial** regions.  
     ☀️ These areas face **extreme UV levels**, increasing risks of **skin cancer** and **heat stress**.
     """)
-    st.image("graph5.png", caption="🏆 Top 10 Countries by Average Solar Intensity")
+    st.image("images/graph5.png", caption="🏆 Top 10 Countries by Average Solar Intensity", use_container_width=True)
 
     # 💡 Interpretation 5 – Spatial Clusters
     st.subheader("💡 Interpretation 5 – Spatial Clusters")
@@ -183,7 +183,7 @@ with tabs[2]:
     🗺️ High-intensity clusters concentrate in **equatorial**, **arid**, and **tropical** zones.  
     🔆 These combine long **sunlight hours** and reflective surfaces (sand, sea), amplifying **radiation exposure** to dangerous levels.
     """)
-    st.image("graph1.png", caption="🗺️ Geographical Distribution of Solar Intensity")
+    st.image("images/graph1.png", caption="🗺️ Geographical Distribution of Solar Intensity", use_container_width=True)
 
     # 🌍 General Conclusion
     st.subheader("🌍 General Conclusion")
@@ -202,6 +202,7 @@ with tabs[3]:
     - WHO Urban Health Guidelines  
     - Lima Smart Cities Initiative
     """)
+
 
 
 
