@@ -1,4 +1,4 @@
-# suntrack_app.py
+    # suntrack_app.py
 import streamlit as st
 import osmnx as ox
 import networkx as nx
@@ -165,7 +165,7 @@ with tabs[2]:
     ☀️ **Shortwave radiation** peaks during **summer months (~370 W/m²)**, while **longwave** stays consistently high (**>250 W/m²**).  
     📈 Stronger seasonal exposure → higher **UV risk** at midday in warm months.
     """)
-    st.image("images/graph2.png", caption="📅 Monthly Shortwave & Longwave Radiation (BOREAS-style)", use_container_width=True)
+    st.image("images/graph1.png", caption="📅 Monthly Shortwave & Longwave Radiation (BOREAS-style)", use_container_width=True)
 
     # 💡 Interpretation 2 – Long-Term Trend
     st.subheader("💡 Interpretation 2 – Long-Term Trend (1983–2016)")
@@ -173,7 +173,7 @@ with tabs[2]:
     📈 Average **solar intensity** shows a **~+15%** rise over three decades.  
     ⚠️ This implies growing **UV exposure** and emphasizes the need for **shade-aware routing**.
     """)
-    st.image("images/graph3.png", caption="📈 Multi-decadal Trend of Solar Intensity", use_container_width=True)
+    st.image("images/graph2.png", caption="📈 Multi-decadal Trend of Solar Intensity", use_container_width=True)
 
     # 💡 Interpretation 3 – Regional Differences
     st.subheader("💡 Interpretation 3 – Regional Differences")
@@ -181,7 +181,7 @@ with tabs[2]:
     🌍 **Asia** and **Africa** present the **highest and most variable** intensity (medians ≈ **2 W/m²**, peaks **>6 W/m²**).  
     🧴 Populations here need stronger **protection behaviors** and **shade infrastructures**.
     """)
-    st.image("images/graph4.png", caption="🌍 Regional Intensity Comparison", use_container_width=True)
+    st.image("images/graph3.png", caption="🌍 Regional Intensity Comparison", use_container_width=True)
 
     # 💡 Interpretation 4 – Country-Level Hotspots
     st.subheader("💡 Interpretation 4 – Country-Level Hotspots")
@@ -189,7 +189,7 @@ with tabs[2]:
     🏆 **Pakistan**, **Oman**, and **UAE** lead with **>3 W/m²** average solar intensity, consistent with **arid/desert climates**.  
     ☀️ Extreme UV → higher risks of **skin cancer** and **heat stress**.
     """)
-    st.image("images/graph5.png", caption="🏆 Top Countries by Average Solar Intensity", use_container_width=True)
+    st.image("images/graph4.png", caption="🏆 Top Countries by Average Solar Intensity", use_container_width=True)
 
     # 💡 Interpretation 5 – Spatial Clusters
     st.subheader("💡 Interpretation 5 – Spatial Clusters")
@@ -197,7 +197,7 @@ with tabs[2]:
     🗺️ High-intensity clusters sit in **equatorial**, **tropical**, and **arid** belts.  
     🔆 Long sunlight hours + reflective surfaces (sand/sea) amplify exposure.
     """)
-    st.image("images/graph1.png", caption="🗺️ Geographical Distribution of High Solar Intensity", use_container_width=True)
+    st.image("images/graph5.png", caption="🗺️ Geographical Distribution of High Solar Intensity", use_container_width=True)
 
     st.divider()
 
@@ -231,12 +231,36 @@ with tabs[2]:
 # ---------------- REFERENCE ----------------
 with tabs[3]:
     st.header("📚 References")
-    st.write("""
-    - OpenStreetMap API  
-    - NASA Earth Observatory Data  
-    - WHO Urban Health Guidelines  
-    - Lima Smart Cities Initiative
+    st.markdown("""
+    ### 🌍 Data Sources
+    - **OpenStreetMap API** — Urban routes and geographic features  
+    - **NASA Earth Observatory Data** — Global radiation and surface metrics  
+    - **WHO Urban Health Guidelines** — Health risks from UV exposure  
+    - **Lima Smart Cities Initiative** — Local urban innovation context  
+
+    ### 🛰️ NASA Datasets  
+    - **Global High Resolution Daily Extreme Urban Heat Exposure (UHE-Daily, 1983–2016)**  
+      🔗 [search.earthdata.nasa.gov](https://search.earthdata.nasa.gov/search/granules/collection-details?p=C3540912037-ESDIS&pg[0][v]=f&pg[0][gsk]=-start_date&q=1983&gdf=CSV&tl=946684800!5)  
+    - **BOREAS Follow-On HMet-03: Hourly Meteorological Data at Flux Towers (1994–1996)**  
+      🔗 [earthdata.nasa.gov/catalog](https://www.earthdata.nasa.gov/data/catalog/ornl-cloud-bfo-hmet03-hourly-met-p1-608-1?utm_source)  
+    - **Land Surface Temperature Anomaly & Net Radiation Maps**  
+      🔗 [earthobservatory.nasa.gov](https://earthobservatory.nasa.gov/global-maps/MOD_LSTAD_M/CERES_NETFLUX_M)
+
+    ### 🧠 Scientific & Institutional References  
+    - **Ultraviolet Radiation — WHO**  
+      🔗 [who.int/health-topics/ultraviolet-radiation](https://www.who.int/health-topics/ultraviolet-radiation#tab=tab_2)  
+    - **Do Urban Green Spaces Cool Cities Differently Across Latitudes?**  
+      🔗 [sciencedirect.com](https://www.sciencedirect.com/science/article/pii/S2210670725003890#sec5)  
+    - **Sun Exposure: Beyond the Risks**  
+      🔗 [PMC Article](https://pmc.ncbi.nlm.nih.gov/articles/PMC6830553/#sec15)
+
+    ### 💻 Development Tools  
+    - **Google Colab** — Data analysis and visualization  
+    - **Visual Studio Code** — App development  
+    - **Streamlit** — Web app interface  
+    - **Python Libraries:** OSMnx, NetworkX, Folium, Geopy, Matplotlib, Pandas, Numpy  
     """)
+
 
 
 
