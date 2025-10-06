@@ -140,11 +140,57 @@ with tabs[1]:
 # ---------------- ANALYSIS ----------------
 with tabs[2]:
     st.header("📊 Analysis")
-    st.write("""
-    Future updates will include:
-    - Integration with **real park and tree data** from OSM.
-    - Dynamic **solar exposure models** using time-of-day and orientation.
-    - User-defined **health preferences**.
+    st.markdown("""
+    This section explores **solar radiation patterns** using NASA and OSM datasets.  
+    The following analyses illustrate global and seasonal exposure trends to help identify regions with higher health risks.
+    """)
+
+    # 💡 Interpretation 1 – Seasonal Variation
+    st.subheader("💡 Interpretation 1 – Seasonal Variation (BOREAS 1994)")
+    st.markdown("""
+    ☀️ **Shortwave radiation** peaks during **summer months (~370 W/m²)**, while **longwave radiation** remains consistently high (**>250 W/m²**).  
+    📈 This indicates **strong solar exposure** in warmer seasons, increasing **UV risks** and potential **skin damage**.
+    """)
+    st.image("graph2.png", caption="📅 Monthly Average of Shortwave and Longwave Radiation (BOREAS 1994)")
+
+    # 💡 Interpretation 2 – Long-Term Trend
+    st.subheader("💡 Interpretation 2 – Long-Term Trend (1983–2016)")
+    st.markdown("""
+    📈 The average **solar intensity** shows a **slight upward trend (+15%)** over 30 years.  
+    ⚠️ This sustained high radiation level suggests increasing exposure, potentially intensifying **ozone depletion effects** and **UV penetration**.
+    """)
+    st.image("graph3.png", caption="📈 Trend of Solar Intensity (1983–2016)")
+
+    # 💡 Interpretation 3 – Regional Differences
+    st.subheader("💡 Interpretation 3 – Regional Differences")
+    st.markdown("""
+    🌍 **Asia** and **Africa** exhibit the **highest and most variable** solar intensities, with medians near **2 W/m²** and peaks over **6 W/m²**.  
+    🧴 Populations in these zones require **greater sun protection** and **urban planning** with shade and vegetation.
+    """)
+    st.image("graph4.png", caption="🌍 Regional Differences in Solar Intensity")
+
+    # 💡 Interpretation 4 – Country-Level Hotspots
+    st.subheader("💡 Interpretation 4 – Country-Level Hotspots")
+    st.markdown("""
+    🏆 **Pakistan**, **Oman**, and **UAE** lead with **>3 W/m² average solar intensity**, aligning with **desert** and **equatorial** regions.  
+    ☀️ These areas face **extreme UV levels**, increasing risks of **skin cancer** and **heat stress**.
+    """)
+    st.image("graph5.png", caption="🏆 Top 10 Countries by Average Solar Intensity")
+
+    # 💡 Interpretation 5 – Spatial Clusters
+    st.subheader("💡 Interpretation 5 – Spatial Clusters")
+    st.markdown("""
+    🗺️ High-intensity clusters concentrate in **equatorial**, **arid**, and **tropical** zones.  
+    🔆 These combine long **sunlight hours** and reflective surfaces (sand, sea), amplifying **radiation exposure** to dangerous levels.
+    """)
+    st.image("graph1.png", caption="🗺️ Geographical Distribution of Solar Intensity")
+
+    # 🌍 General Conclusion
+    st.subheader("🌍 General Conclusion")
+    st.markdown("""
+    ⚠️ Sustained and rising **solar radiation**—especially in **Asia**, **Africa**, and **desert regions**—shows a global increase in **UV exposure**.  
+    Without adequate protection, risks of **skin cancer**, **photoaging**, and **heat-related illnesses** grow significantly.  
+    💡 Future cities must integrate **shade infrastructure**, **sunscreen campaigns**, and **UV-aware planning** for healthier urban living.
     """)
 
 # ---------------- REFERENCE ----------------
@@ -156,6 +202,7 @@ with tabs[3]:
     - WHO Urban Health Guidelines  
     - Lima Smart Cities Initiative
     """)
+
 
 
 
